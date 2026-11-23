@@ -52,6 +52,15 @@ class AurAgridInput(BaseModel):
     )
 
 
+def _default_session():
+    """A requests session that says which client is calling (lets AurAgrid count LangChain usage)."""
+    import requests
+    from langchain_auragrid import __version__
+    s = requests.Session()
+    s.headers["User-Agent"] = "langchain-auragrid/%s" % __version__
+    return s
+
+
 class _NoWallet:
     """Stands in when no wallet is configured: a paid feed returns its price instead."""
 
@@ -110,7 +119,7 @@ class AurAgridOracleTool(BaseTool):
                 budget_sats=self.budget_sats,
                 verify_signature=verify,
                 require_signature=verify is not None,
-                session=self.session,
+                session=self.session if self.session is not None else _default_session(),
             )
         return self._client
 
