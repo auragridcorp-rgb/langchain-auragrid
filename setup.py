@@ -9,6 +9,7 @@ setup(
     author="AurAgrid Corp",
     author_email="auragridcorp@gmail.com",
     url="https://github.com/auragridcorp-rgb/langchain-auragrid",
+    license="MIT",
     packages=find_packages(),
     install_requires=[
         "langchain-core>=0.2.0",

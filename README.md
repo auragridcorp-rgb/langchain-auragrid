@@ -18,7 +18,7 @@ U.S. public-domain feeds.
 ## Install
 
 ```bash
-pip install git+https://github.com/auragridcorp-rgb/langchain-auragrid.git
+pip install langchain-auragrid
 ```
 
 Requires Python 3.8+, `langchain-core`, and
